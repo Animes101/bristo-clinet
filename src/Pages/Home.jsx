@@ -1,12 +1,24 @@
 import React from 'react'
 import ReactHelmet from '../Components/Layout/ReactHelmet'
+import Banner from '../Components/Banner'
+import CatagoryCard from '../Components/CatagoryCard'
+import SectionHeading from '../Components/SectionHeading'
 
 const Home = () => {
   return (
-    <div className='flex  flex-col justify-center items-center'>
-      <ReactHelmet pageName={'Home Page'} />
-      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
-    </div>
+    <section>
+      <div className='container mx-auto'>
+        <Banner  />
+      </div>
+
+
+      {/* catagory */}
+      <div className='container  mx-auto'>
+        <SectionHeading title="Our Categories" desc="Explore a variety of delicious dishes" time={'---From 11:00am to 10:00pm---'} />
+        <CatagoryCard />
+      </div>
+
+    </section>
   )
 }
 

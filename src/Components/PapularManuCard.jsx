@@ -1,6 +1,6 @@
 import React from "react";
 
-const PapularManuCard = ({ item }) => {
+const PapularManuCard = ({ item, button }) => {
   const { name, image,price, recipe } = item;
 
   return (
@@ -13,6 +13,7 @@ const PapularManuCard = ({ item }) => {
           <div className="card-actions justify-end">
             <button className="">{price}$</button>
           </div>
+          {button&& <button className="btn btn-primary">Add to Card</button>}
         </div>
       </div>
     </div>

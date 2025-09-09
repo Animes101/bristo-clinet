@@ -133,11 +133,11 @@ const Home = () => {
           <Swiper navigation={true} modules={[Navigation]} className="mySwiper text-center border  my-10 h-[400px]">
             {review &&
               review.map((item) => (
-                <SwiperSlide className="flex justify-center flex-col items-center" key={item._id}>
-                  <h1>{item.name}</h1>
+                <SwiperSlide className="flex justify-center flex-col items-center px-10" key={item._id}>
+                  <h1 className="mt-40">{item.name}</h1>
                   <p>{item.details}</p>
                   <p>Rating: {item.rating}</p>
-                  <Rating
+                  <Rating className="mx-auto"
                     style={{ maxWidth: 250 }}
                     value={item.rating}
                     readOnly

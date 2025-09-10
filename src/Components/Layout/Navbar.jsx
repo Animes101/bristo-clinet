@@ -7,7 +7,7 @@ const Navbar = () => {
 
   const navLinkClass = ({ isActive }) =>
     `px-3 py-2 rounded-md font-medium ${
-      isActive ? "text-white" : "text-black"
+      isActive ? "text-white" : "text-yellow-500"
     } hover:text-white`;
 
 
@@ -31,8 +31,8 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className={navLinkClass}>
-              Contact
+            <NavLink to="/login" className={navLinkClass}>
+              Login
             </NavLink>
           </li>
           <li>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 alt="profile"
                 className="w-10 h-10 rounded-full border border-white"
               />
-            </NavLink>
+            </NavLink> 
           </li>
         </ul>
       </div>

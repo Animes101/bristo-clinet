@@ -2,16 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import bgImg from "../assets/others/authentication.png";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
+import { useForm } from "react-hook-form"
 
 const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
 
+
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+
+  console.log(watch("example"))
+
   useEffect(() => {
     loadCaptchaEnginge(6); // 6 digit captcha load করবে
   }, []);
 
-  const handleValidateCaptcha = () => {
+  const handleValidateCaptcha = (e) => {
+    e.stopPropagation();
     const value = captchaRef.current.value;
 
     if (validateCaptcha(value) === true) {
@@ -44,7 +59,7 @@ const Login = () => {
 
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-              <fieldset
+              <form onSubmit={handleSubmit(onSubmit)}
                 style={{
                   backgroundImage: `url(${bgImg})`,
                   backgroundSize: "cover",
@@ -53,9 +68,9 @@ const Login = () => {
                 className="fieldset"
               >
                 <label className="label">Email</label>
-                <input type="email" className="input" placeholder="Email" />
+                <input type="email" className="input" {...register("email")} placeholder="Email" />
                 <label className="label">Password</label>
-                <input type="password" className="input" placeholder="Password" />
+                <input type="password" className="input" {...register("password")} placeholder="Password" />
 
                 <div>
                   <div>
@@ -85,7 +100,7 @@ const Login = () => {
                 <Link to={"/signup"} className="link link-hover">
                   Go to signup
                 </Link>
-              </fieldset>
+              </form>
             </div>
           </div>
         </div>

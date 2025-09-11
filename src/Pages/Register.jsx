@@ -1,8 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import bgImg from "../assets/others/authentication.png";
+import { useForm } from "react-hook-form"
+
 
 const Register = () => {
+
+const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+
+  console.log(watch("example"))
+
+
   return (
    <div
          className="min-h-screen flex items-center justify-center"
@@ -25,18 +40,18 @@ const Register = () => {
    
              <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                <div className="card-body">
-                 <fieldset  style={{
+                 <form onSubmit={handleSubmit(onSubmit)} style={{
            backgroundImage: `url(${bgImg})`,
            backgroundSize: "cover",
            backgroundPosition: "center",
          }} className="fieldset">
                    <label className="label">Email</label>
-                   <input type="email" className="input bg-transparent" placeholder="Email" />
+                   <input type="email" className="input bg-transparent" {...register("email", { required: true })} placeholder="Email" />
                    <label className="label">Password</label>
                    <input
                      type="password"
                      className="input bg-transparent"
-                     placeholder="Password"
+                     {...register("password", { required: true })} placeholder="Password"
                    />
                    <div>
                      <a className="link link-hover">Forgot password?</a>
@@ -45,7 +60,7 @@ const Register = () => {
                    <Link to={"/login"} className="link link-hover">
                      Go to signup
                    </Link>
-                 </fieldset>
+                 </form>
                </div>
              </div>
            </div>

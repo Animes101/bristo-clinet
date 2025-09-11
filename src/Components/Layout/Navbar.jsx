@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import logo from '../../assets/logo.png'
+import { AuthContext } from "../../context/AuthProvider";
+import Swal from 'sweetalert2'
+import { useContext } from "react";
 
 const Navbar = () => {
+
+  const {user, logout}=useContext(AuthContext);
+  console.log(user);
 
 
 
@@ -10,6 +16,21 @@ const Navbar = () => {
       isActive ? "text-white" : "text-yellow-500"
     } hover:text-white`;
 
+
+
+    // logout 
+    const handleLogout=()=>{
+
+      logout();
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+    }
 
 
   return (
@@ -51,18 +72,18 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/signout" className={navLinkClass}>
-              Sign Out
-            </NavLink>
+            <button onClick={handleLogout} className="bg-yellow-400 p-5">
+              Sign Out {user?.email}
+            </button>
           </li>
           <li>
             <NavLink to="/profile" className={navLinkClass}>
               <img
-                src="https://i.pravatar.cc/40"
+                src={user?.photoURL}
                 alt="profile"
                 className="w-10 h-10 rounded-full border border-white"
               />
-            </NavLink> 
+            </NavLink>
           </li>
         </ul>
       </div>

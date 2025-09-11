@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { auth } from '../firebase/firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { set } from 'react-hook-form';
 
 export const AuthContext=createContext(null);
 
@@ -12,13 +13,16 @@ const AuthProvider = ({children}) => {
 
     //create user
     const createUser=(email, password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // login user
 
     const loginUser=(email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
+        
     }
 
      //logout user
@@ -33,16 +37,14 @@ const AuthProvider = ({children}) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = user.uid;
-
+   
     setLoading(false);
     setUser(user);
-
-    console.log(uid)
     // ...
   } else {
     // User is signed out
     setUser(null);
+    setLoading(false)
     // ...
   }
 

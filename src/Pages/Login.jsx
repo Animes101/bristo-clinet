@@ -1,25 +1,33 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import bgImg from "../assets/others/authentication.png";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
 import { useForm } from "react-hook-form"
+import { AuthContext } from "../context/AuthProvider";
 
 const Login = () => {
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
+
+  const {loginUser}=useContext(AuthContext)
 
 
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => {
 
-  console.log(watch("example"))
+    const {email, password}=data;
+    loginUser(email,password)
+    .then(result=> console.log(result.user))
+
+
+  }
+
 
   useEffect(() => {
     loadCaptchaEnginge(6); // 6 digit captcha load করবে

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import bgImg from "../assets/others/authentication.png";
 import { useForm } from "react-hook-form"
+import { AuthContext } from "../context/AuthProvider";
 
 
 const Register = () => {
+
+  const {createUser}=useContext(AuthContext)
 
 const {
     register,
@@ -13,7 +16,17 @@ const {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => {
+
+    const {email, password}=data;
+
+    createUser(email,password)
+
+    .then(result=> console.log(result.user))
+
+
+    
+  }
 
   console.log(watch("example"))
 

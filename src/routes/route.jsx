@@ -8,6 +8,7 @@ import OurMenu from "../Pages/OurManu";
 import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivateRoute from "./PrivetRoute";
 
 
 
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {path:'/shop', element:<OurShop />},
-      {path:'/menu', element:<OurMenu />}
+      {path:'/menu', element:<PrivateRoute><OurMenu /></PrivateRoute>}
 
     ],
   },

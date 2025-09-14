@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
+import axios from 'axios';
 
 const PapularManuCard = ({ item, button }) => {
   const { name, image,price, recipe } = item;
+
+  const {user}=useContext(AuthContext);
+
+
+  const handleAddToCart=(item)=>{
+
+    const userEmail=user?.email;
+    const orderItem={name,image,price, email:userEmail, menuItemId:item._id};
+
+    if(userEmail){
+
+      axios.post('http://localhost:5000/carts', orderItem)
+      .then(function (response) {
+        console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+      
+
+    }else{
+      return alert('please login')
+    }
+ 
+
+  }
+
+
+
 
   return (
     <div>
@@ -13,7 +44,7 @@ const PapularManuCard = ({ item, button }) => {
           <div className="card-actions justify-end">
             <button className="">{price}$</button>
           </div>
-          {button&& <button className="btn btn-primary">Add to Card</button>}
+          {button&& <button onClick={() => handleAddToCart(item)} className="btn btn-primary">Add to Card</button>}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bgImg from "../assets/others/authentication.png";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../context/AuthProvider";
@@ -8,6 +8,7 @@ import { AuthContext } from "../context/AuthProvider";
 const Register = () => {
 
   const {createUser}=useContext(AuthContext)
+  const navigate=useNavigate();
 
 const {
     register,
@@ -22,7 +23,9 @@ const {
 
     createUser(email,password)
 
-    .then(result=> console.log(result.user))
+    .then(result=> {
+      return navigate('/')
+    })
 
 
     

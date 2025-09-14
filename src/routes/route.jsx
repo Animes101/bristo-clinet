@@ -9,6 +9,7 @@ import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivetRoute";
+import Dashboard from "../Pages/Dashboard";
 
 
 
@@ -28,7 +29,14 @@ const router = createBrowserRouter([
     element: <NotFound404 />
   },
   {path:'/login', element:<Login />},
-  {path:'/signup', element:<Register />}
+  {path:'/signup', element:<Register />},
+  {path:'/dashboard',
+     element:<PrivateRoute><Dashboard /></PrivateRoute>,
+     children :[
+      //  {path:'/dashboard/cart', element:<Cart />},
+      //  {path:'/dashboard/order', element:<Order />}
+     ]
+    }
 ]);
 
 export default router;

@@ -3,11 +3,20 @@ import logo from '../../assets/logo.png'
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from 'sweetalert2'
 import { useContext } from "react";
+import useCart from "../../hooks/useCart";
 
 const Navbar = () => {
 
   const {user, logout}=useContext(AuthContext);
-  console.log(user);
+
+  const {isPending, error, cart}=useCart();
+
+  console.log(cart)
+
+  
+
+
+
 
 
 
@@ -58,7 +67,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink to="/dashboard" className={navLinkClass}>
-              Dashboard
+              Dashboard {cart.length}
             </NavLink>
           </li>
           <li>

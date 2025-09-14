@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import axios from 'axios';
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 
 const PapularManuCard = ({ item, button }) => {
   const { name, image,price, recipe } = item;
 
   const {user}=useContext(AuthContext);
+  const axiosSecure=useAxiosSecure();
 
 
   const handleAddToCart=(item)=>{
@@ -15,7 +17,7 @@ const PapularManuCard = ({ item, button }) => {
 
     if(userEmail){
 
-      axios.post('http://localhost:5000/carts', orderItem)
+      axiosSecure.post('/carts', orderItem)
       .then(function (response) {
         console.log(response);
   })

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useCart from "../hooks/useCart";
 
 
 const PapularManuCard = ({ item, button }) => {
@@ -10,6 +11,8 @@ const PapularManuCard = ({ item, button }) => {
 
   //use axios secure
   const axiosSecure=useAxiosSecure();
+
+  const { refetch } = useCart();
 
 
   const handleAddToCart=(item)=>{
@@ -21,6 +24,7 @@ const PapularManuCard = ({ item, button }) => {
 
       axiosSecure.post('/carts', orderItem)
       .then(function (response) {
+        refetch();
         console.log(response);
   })
   .catch(function (error) {

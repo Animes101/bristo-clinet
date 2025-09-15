@@ -16,7 +16,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div>
+      <div className="w-2/3 mx-auto">
         <Outlet />
       </div>
     </div>

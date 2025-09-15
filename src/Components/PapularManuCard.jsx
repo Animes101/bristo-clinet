@@ -7,6 +7,8 @@ const PapularManuCard = ({ item, button }) => {
   const { name, image,price, recipe } = item;
 
   const {user}=useContext(AuthContext);
+
+  //use axios secure
   const axiosSecure=useAxiosSecure();
 
 

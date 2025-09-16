@@ -11,6 +11,7 @@ import Register from "../Pages/Register";
 import PrivateRoute from "./PrivetRoute";
 import Dashboard from "../Pages/Dashboard";
 import Cart from "../Pages/cart";
+import Users from "../Pages/Users";
 
 
 
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
      element:<PrivateRoute><Dashboard /></PrivateRoute>,
      children :[
        {path:'/dashboard/cart', element:<Cart />},
-      //  {path:'/dashboard/order', element:<Order />}
+       {path:'/dashboard/users', element:<Users />}
      ]
     }
 ]);

@@ -3,12 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import bgImg from "../assets/others/authentication.png";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../context/AuthProvider";
+import useaxiossPublic from "../hooks/useaxiossPublic";
+import Google from "../Components/Google";
 
 
 const Register = () => {
 
   const {createUser}=useContext(AuthContext)
   const navigate=useNavigate();
+  const { axiosPublic } = useaxiossPublic();
 
 const {
     register,
@@ -24,7 +27,15 @@ const {
     createUser(email,password)
 
     .then(result=> {
-      return navigate('/')
+      
+
+      const user=result.user;
+      const users={email, password}
+
+         axiosPublic.post('/users', users)
+         .then(res=>{
+          console.log(res.data)
+         })
     })
 
 
@@ -73,6 +84,7 @@ const {
                      <a className="link link-hover">Forgot password?</a>
                    </div>
                    <button className="btn btn-neutral mt-4">Login</button>
+                   <Google />
                    <Link to={"/login"} className="link link-hover">
                      Go to signup
                    </Link>

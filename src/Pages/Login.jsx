@@ -4,6 +4,7 @@ import bgImg from "../assets/others/authentication.png";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "../context/AuthProvider";
+import Google from "../Components/Google";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -104,6 +105,7 @@ const Login = () => {
                 <button className="btn btn-neutral mt-4" disabled={disabled}>
                   Login
                 </button>
+                <Google />
 
                 <Link to={"/signup"} className="link link-hover">
                   Go to signup

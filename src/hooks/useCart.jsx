@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { axiosSecure } from './useAxiosSecure'
 import { useQuery } from '@tanstack/react-query'
 import { useContext } from 'react'
@@ -17,9 +17,8 @@ const useCart = () => {
         return  res.data
     }, 
     
-  })
-
-  return {isPending, error, cart, refetch}
+  })         
+   return {isPending, error, cart, refetch}
  
 }
 

@@ -1,13 +1,15 @@
-import { axiosSecure } from './useAxiosSecure'
-import { useQuery } from '@tanstack/react-query'
 
-const useCart = () => {
+import { useQuery } from '@tanstack/react-query'
+import { axiosSecure } from './useAxiosSecure'
+
+
+const useUsers = () => {
 
     //tan stack query
      const { refetch, isPending, error, data : users=[] } = useQuery({
     queryKey: ['users'],
     queryFn:async () =>{
-        const res=await axiosSecure.get(`/users`)
+        const res=await axiosSecure.get(`/users` )
 
         return  res.data
     }, 
@@ -17,4 +19,4 @@ const useCart = () => {
  
 }
 
-export default useCart
+export default useUsers

@@ -7,12 +7,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import useaxiossPublic from "../hooks/useaxiossPublic";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const {axiosPublic}=useaxiossPublic()
 
   const provider = new GoogleAuthProvider();
   //create user
@@ -51,11 +53,22 @@ const AuthProvider = ({ children }) => {
 
           setLoading(false);
           setUser(user);
+          const email=user.email
+
+          axiosPublic.post('/jwt', {email})
+          .then(res=>{
+            if(res.data.token){
+               localStorage.setItem('ac-token', res.data.token )
+            }
+          })
+
+          
           // ...
         } else {
           // User is signed out
           setUser(null);
           setLoading(false);
+          localStorage.clear('ac-token')
           // ...
         }
 

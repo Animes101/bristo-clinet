@@ -6,7 +6,7 @@ import { axiosSecure } from '../hooks/useAxiosSecure';
 
 const Users = () => {
 
-    const {isPending, error, users, refetch}=useUsers()  
+    const {isPending , users, refetch}=useUsers()
 
     const deleteUsers=(id)=>{
 
@@ -23,6 +23,19 @@ const Users = () => {
             }
            
         })
+
+    }
+
+    const admineRodeActive=id=>{
+
+      axiosSecure.patch(`/users/admin/${id}`)
+      .then(res=> {
+        console.log(res)
+        if(res.data.modifiedCount>0){
+          refetch()
+          alert('admin')
+        }
+      })
 
     }
     
@@ -71,6 +84,11 @@ const Users = () => {
                         <br />
                       </td>
                       <td>{item.password}</td>
+                      <th>
+                        <button onClick={() => admineRodeActive(item._id)} className="btn bg-red-500 btn-xs">
+                          {item.role == 'admin'? 'admin': 'Make Admin'}
+                        </button>
+                      </th>
                       <th>
                         <button onClick={() => deleteUsers(item._id)} className="btn bg-red-500 btn-xs">
                           Delete

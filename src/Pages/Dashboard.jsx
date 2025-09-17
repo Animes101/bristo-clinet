@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
 
-  const isAdmin=true;
+  const isAdmin=false;
   return (
     <div className="flex ">
       <div className="w-[400px] h-screen bg-red-400">

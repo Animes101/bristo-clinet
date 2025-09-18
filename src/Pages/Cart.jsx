@@ -52,8 +52,6 @@ const Cart = () => {
               {cart &&
                 cart.map((item, index) => {
                   return (
-
-                    console.log(item),
                     <tr key={item._id}>
                       <th>{index + 1}</th>
                       <td>

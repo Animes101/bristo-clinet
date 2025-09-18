@@ -52,7 +52,6 @@ const Home = () => {
       });
   }, []);
 
-  console.log(review);
   return (
     <section className="container mx-auto">
       <div>

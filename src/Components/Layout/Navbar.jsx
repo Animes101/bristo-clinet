@@ -10,9 +10,6 @@ const Navbar = () => {
   const {user, logout}=useContext(AuthContext);
 
   const {isPending, error, cart}=useCart();
-
-  console.log(cart)
-
   
 
 

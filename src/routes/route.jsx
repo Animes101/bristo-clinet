@@ -3,7 +3,6 @@ import Root from "../Pages/Root";
 import Home from "../Pages/Home";
 import { createBrowserRouter } from "react-router-dom";
 import NotFound404 from "../Pages/NotFound404";
-import About from "../Pages/About";
 import OurMenu from "../Pages/OurManu";
 import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
@@ -13,6 +12,7 @@ import Dashboard from "../Pages/Dashboard";
 import Cart from "../Pages/cart";
 import Users from "../Pages/Users";
 import Admin from "./Admin";
+import AddMenu from "../Pages/AddMenu";
 
 
 
@@ -39,7 +39,8 @@ const router = createBrowserRouter([
      element:<PrivateRoute><Dashboard /></PrivateRoute>,
      children :[
        {path:'/dashboard/cart', element:<Cart />},
-       {path:'/dashboard/users', element: <Admin><Users /></Admin>}
+       {path:'/dashboard/users', element: <Admin><Users /></Admin>},
+       {path:'/dashboard/addmenu', element: <Admin><AddMenu /></Admin>}
      ]
     }
 ]);

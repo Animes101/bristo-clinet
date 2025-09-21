@@ -20,6 +20,9 @@ const Dashboard = () => {
           <li>
             <Link to="/dashboard/order">all Order</Link>
           </li>
+          <li>
+            <Link to="/dashboard/addmenu">Add Menu</Link>
+          </li>
         </ul>: <ul className="flex flex-col items-center justify-center text-white uppercase font-3xl mt-10">
           <li>
             <Link to="/dashboard/cart">Carts</Link>

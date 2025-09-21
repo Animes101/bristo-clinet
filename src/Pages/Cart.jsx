@@ -19,6 +19,9 @@ const Cart = () => {
         refetch();
       }
     })
+    .catch((err)=>{
+      console.log(err)
+    })
   };
 
   return (

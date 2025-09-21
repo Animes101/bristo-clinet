@@ -2,9 +2,11 @@ import React from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthProvider'
 import useaxiossPublic from '../hooks/useaxiossPublic';
+import { useNavigate } from 'react-router-dom';
 
 const Google = () => {
       const { axiosPublic } = useaxiossPublic();
+      const navigate=useNavigate()
 
     const {googleLogin}=useContext(AuthContext)
     const handleGoogleSignIn=()=>{
@@ -17,7 +19,9 @@ const Google = () => {
 
             axiosPublic.post('/users', user)
             .then(res=>{
-                console.log(res)
+
+              navigate('/')
+                
             })
 
 

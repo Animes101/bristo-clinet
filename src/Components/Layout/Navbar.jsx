@@ -12,11 +12,6 @@ const Navbar = () => {
   const {isPending, error, cart}=useCart();
   
 
-
-
-
-
-
   const navLinkClass = ({ isActive }) =>
     `px-3 py-2 rounded-md font-medium ${
       isActive ? "text-white" : "text-yellow-500"

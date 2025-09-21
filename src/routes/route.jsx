@@ -12,6 +12,9 @@ import PrivateRoute from "./PrivetRoute";
 import Dashboard from "../Pages/Dashboard";
 import Cart from "../Pages/cart";
 import Users from "../Pages/Users";
+import Admin from "./Admin";
+
+
 
 
 
@@ -22,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {path:'/shop', element:<OurShop />},
-      {path:'/menu', element:<PrivateRoute><OurMenu /></PrivateRoute>}
+      {path:'/menu', element:<OurMenu />}
 
     ],
   },
@@ -36,7 +39,7 @@ const router = createBrowserRouter([
      element:<PrivateRoute><Dashboard /></PrivateRoute>,
      children :[
        {path:'/dashboard/cart', element:<Cart />},
-       {path:'/dashboard/users', element:<Users />}
+       {path:'/dashboard/users', element: <Admin><Users /></Admin>}
      ]
     }
 ]);

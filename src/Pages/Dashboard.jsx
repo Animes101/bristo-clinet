@@ -9,6 +9,7 @@ const Dashboard = () => {
 
     const {isAdmin}=useAdmin()
 
+
   return (
     <div className="flex ">
       <div className="w-[400px] h-screen bg-red-400">

@@ -1,9 +1,9 @@
 import axios from "axios";
-
 import { AuthContext } from "../context/AuthProvider";
 import { useContext } from "react";
 
-export const axiosSecure = axios.create({
+
+ export const axiosSecure = axios.create({
   baseURL: "http://localhost:5000",
 });
 
@@ -53,9 +53,6 @@ axiosSecure.interceptors.response.use(function onFulfilled(response) {
     return Promise.reject(error);
   });
 
-
-
-  return axiosSecure;
 };
 
 export default useAxiosSecure;

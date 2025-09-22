@@ -44,8 +44,8 @@ const AddMenu = () => {
        
         name,
         recipe:description,
-         imgage:img,
-         category:catagory,
+         image:img,
+         category: catagory.toLowerCase(),
          price:prices,
         
         
@@ -93,7 +93,7 @@ const AddMenu = () => {
               <option value="Salad">Salad</option>
               <option value="Pizza">Pizza</option>
               <option value="Soups">Soups</option>
-              <option value="Desserts">Desserts</option>
+              <option value="Dessert">Dessert</option>
             </select>
           </div>
           <div>

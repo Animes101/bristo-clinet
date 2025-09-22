@@ -7,7 +7,11 @@ import PapularManuCard from "../Components/PapularManuCard";
 
 const OurMenu = () => {
   const { menu } = useMenu();
+
   const dessert = menu?.filter((item) => item.category === "dessert");
+
+  console.log(dessert)
+  
   const popular = menu?.filter((item) => item.category === "popular");
   const salad = menu?.filter((item) => item.category === "salad");
   const offered = menu?.filter((item) => item.category === "offered");

@@ -2,15 +2,17 @@ import React from 'react'
 import useMenu from '../hooks/useMenu'
 import SectionHeading from '../Components/SectionHeading'
 import { Link } from 'react-router-dom'
+import { axiosSecure } from '../hooks/useAxiosSecure'
 
 const ManageAllItem = () => {
     const {menu}=useMenu()
 
-    console.log(menu)
 
-    const handleDelete=()=>{
+    const handleDelete= async (id)=>{
 
-        alert('delete')
+        const result=  await axiosSecure.delete(`/menu/${id}`)
+
+        console.log(result)
 
 
 
@@ -77,7 +79,7 @@ const ManageAllItem = () => {
                         </button>
                       </th>
                       <th>
-                        <Link to={'/dashboard/menu/update'} onClick={() => handleUpdate(item._id)} className="btn bg-red-500 btn-xs">
+                        <Link to={'/dashboard/menu/update'} state={item._id} onClick={() => handleUpdate(item._id)} className="btn bg-red-500 btn-xs">
                           Update
                         </Link>
                       </th>

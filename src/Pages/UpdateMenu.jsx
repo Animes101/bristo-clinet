@@ -2,6 +2,7 @@ import SectionHeading from "../Components/SectionHeading";
 import { useForm } from "react-hook-form"
 import useaxiossPublic from "../hooks/useaxiossPublic";
 import { axiosSecure } from '../hooks/useAxiosSecure';
+import { useLocation } from "react-router-dom";
 
 const img_hostin_api_key = import.meta.env.VITE_IMG_HOSTINT_API;
 
@@ -9,6 +10,11 @@ const img_hosting_api = `https://api.imgbb.com/1/upload?expiration=600&key=${img
 
 
 const UpdateMenu = () => {
+
+    const locatio=useLocation();
+
+    const id =locatio.state;
+
 
       const {axiosPublic}=useaxiossPublic();
 
@@ -22,7 +28,7 @@ const UpdateMenu = () => {
 
   const onSubmit =async (data) => {
 
-    const {name, prices, description,catagory,img}=data;
+    const {name, prices, description,catagory,img,}=data;
 
      // step-1: formData বানাও
   const formData = new FormData();
@@ -50,10 +56,10 @@ const UpdateMenu = () => {
         
       }
 
-      console.log(addMenu)
-        // const result= await axiosSecure.post(`menu/update/${id}`, addMenu)
+      
+        const result= await axiosSecure.patch(`menu/${id}`, addMenu)
 
-        // console.log(result.data)
+        console.log(result.data)
 
     }
 

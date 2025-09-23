@@ -1,15 +1,16 @@
-import React from "react";
 import SectionHeading from "../Components/SectionHeading";
 import { useForm } from "react-hook-form"
 import useaxiossPublic from "../hooks/useaxiossPublic";
+import { axiosSecure } from '../hooks/useAxiosSecure';
 
 const img_hostin_api_key = import.meta.env.VITE_IMG_HOSTINT_API;
 
 const img_hosting_api = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hostin_api_key}`;
 
 
-const AddMenu = () => {
-  const {axiosPublic}=useaxiossPublic();
+const UpdateMenu = () => {
+
+      const {axiosPublic}=useaxiossPublic();
 
       const {
     register,
@@ -49,27 +50,25 @@ const AddMenu = () => {
         
       }
 
+      console.log(addMenu)
+        // const result= await axiosSecure.post(`menu/update/${id}`, addMenu)
 
-        const result= await axiosPublic.post('/menu', addMenu)
-
-        console.log(result.data)
+        // console.log(result.data)
 
     }
 
   
-  
-  
   }
 
-   
   return (
     <div>
-      <SectionHeading
-        title={"ADD AN ITEM"}
+
+        <SectionHeading title={"Update Menu"}
         desc={""}
-        time={"---Whats new?---"}
-      ></SectionHeading>
-      <form onSubmit={handleSubmit(onSubmit)} action="" className="p-10 border-2">
+        time={"---Update Now?---"}>
+
+        </SectionHeading>
+       < form onSubmit={handleSubmit(onSubmit)} action="" className="p-10 border-2">
         <label htmlFor="name">Recipe name*</label>
         <input 
          {...register("name")}
@@ -112,7 +111,7 @@ const AddMenu = () => {
         <button type="submit" className="btn btn-secondary w-full my-4">Add Item</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddMenu;
+export default UpdateMenu

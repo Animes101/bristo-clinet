@@ -1,42 +1,36 @@
-import { Link } from "react-router-dom";
-import SectionHeading from "../Components/SectionHeading";
-import { axiosSecure } from "../hooks/useAxiosSecure";
-import useCart from "../hooks/useCart";
+import React from 'react'
+import useMenu from '../hooks/useMenu'
+import SectionHeading from '../Components/SectionHeading'
+import { Link } from 'react-router-dom'
 
-const Cart = () => {
-  const { cart ,refetch} = useCart();
+const ManageAllItem = () => {
+    const {menu}=useMenu()
 
-  const totalOrders = cart.length;
-  const totalPrice = parseInt(cart.reduce((sum, item) => sum + item.price, 0));
+    console.log(menu)
+
+    const handleDelete=()=>{
+
+        alert('delete')
 
 
-  const handleDelete = (id) => {
 
-    axiosSecure.delete(`/carts/${id}`)
-    .then(res=>{
-      console.log(res);
-      if(res.data.deletedCount>0){
-        alert('deleted successfully')
-        refetch();
-      }
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-  };
+    }
 
+    const handleUpdate=(id)=>{
+
+        alert(id)
+
+
+    }
   return (
-    <div className="">
+    <div>
       <SectionHeading
-        title={"My Cart"}
-        desc={"Wanna Add More"}
-        time={"2 min ago"}
+        title={"Manag Item"}
+        desc={"Wanna Update Delete"}
+        time={""}
       ></SectionHeading>
-
-      <div className="flex justify-between py-5 bg-red-300  px-3">
-        <h1>Total orders: {totalOrders}</h1>
-        <h1>total price: {totalPrice}TK</h1>
-        <Link to={'/dashboard/payment'} className="btn btn-secondary">Pay</Link>
+       <div className="flex justify-between py-5 bg-red-300  px-3">
+        <h1>Total Menu</h1>
       </div>
       <div>
         <div className="overflow-x-auto">
@@ -53,8 +47,10 @@ const Cart = () => {
             </thead>
             <tbody>
               {/* rows */}
-              {cart &&
-                cart.map((item, index) => {
+              {menu &&
+                menu.map((item, index) => {
+
+                    console.log(menu)
                   return (
                     <tr key={item._id}>
                       <th>{index + 1}</th>
@@ -80,6 +76,11 @@ const Cart = () => {
                           Delete
                         </button>
                       </th>
+                      <th>
+                        <Link to={'/dashboard/menu/update'} onClick={() => handleUpdate(item._id)} className="btn bg-red-500 btn-xs">
+                          Update
+                        </Link>
+                      </th>
                     </tr>
                   );
                 })}
@@ -88,7 +89,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default ManageAllItem

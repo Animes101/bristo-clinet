@@ -26,6 +26,8 @@ const useAxiosSecure = () => {
         // Do something with request error
         return Promise.reject(error);
       },
+
+      
 );
 
 
@@ -45,13 +47,13 @@ axiosSecure.interceptors.response.use(function onFulfilled(response) {
       
                await logout();
 
-
-
     }
 
 
     return Promise.reject(error);
   });
+
+  return axiosSecure
 
 };
 

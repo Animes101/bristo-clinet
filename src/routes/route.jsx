@@ -13,6 +13,9 @@ import Cart from "../Pages/cart";
 import Users from "../Pages/Users";
 import Admin from "./Admin";
 import AddMenu from "../Pages/AddMenu";
+import Payment from "../Pages/Payment";
+import ManageAllItem from "../Pages/ManageAllItem";
+import UpdateMenu from "../Pages/UpdateMenu";
 
 
 
@@ -40,7 +43,10 @@ const router = createBrowserRouter([
      children :[
        {path:'/dashboard/cart', element:<Cart />},
        {path:'/dashboard/users', element: <Admin><Users /></Admin>},
-       {path:'/dashboard/addmenu', element: <Admin><AddMenu /></Admin>}
+       {path:'/dashboard/addmenu', element: <Admin><AddMenu /></Admin>},
+       {path:'/dashboard/manag', element: <Admin><ManageAllItem /></Admin>},
+       {path:'/dashboard/menu/update', element: <Admin><UpdateMenu /></Admin>},
+        {path:'/dashboard/payment', element: <Payment />}
      ]
     }
 ]);

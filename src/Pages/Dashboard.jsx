@@ -22,6 +22,9 @@ const Dashboard = () => {
             <Link to="/dashboard/order">all Order</Link>
           </li>
           <li>
+            <Link to="/dashboard/manag">Manag Menu</Link>
+          </li>
+          <li>
             <Link to="/dashboard/addmenu">Add Menu</Link>
           </li>
         </ul>: <ul className="flex flex-col items-center justify-center text-white uppercase font-3xl mt-10">
@@ -29,7 +32,7 @@ const Dashboard = () => {
             <Link to="/dashboard/cart">Carts</Link>
           </li>
           <li>
-            <Link to="/dashboard/order">....</Link>
+            <Link to="/dashboard/payment">Payment</Link>
           </li>
         </ul>}
         <hr />

@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import useAxiosSecure from '../hooks/useAxiosSecure'
 import useCart from '../hooks/useCart'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthProvider'
 
 const Checkout = () => {
   const stripe = useStripe()
   const elements = useElements()
   const axiosSecure = useAxiosSecure()
   const {cart} =useCart()
+  const {user}=useContext(AuthContext)
 
-  console.log(cart)
+  console.log(user)
+
 
 const total = Math.round(cart.reduce((sum, item) => sum + Number(item.price || 0), 0))
 
@@ -66,7 +70,32 @@ const total = Math.round(cart.reduce((sum, item) => sum + Number(item.price || 0
       setError(confirmError.message)
     } else {
       console.log('Payment successful ✅', paymentIntent)
-      alert('Payment Successful!')
+      alert('Payment Successful!');
+
+
+
+      //save payment info to the database
+      const paymentInfo = {
+        id: paymentIntent.id,
+        amount: paymentIntent.amount,
+        currency: paymentIntent.currency,
+        status: paymentIntent.status,
+        email:user?.email,
+        date: new Date(),
+        cartItemId: cart.map(item => item._id),
+        PaymentStatus:'pending'
+        
+      }
+
+      console.log(paymentInfo)
+
+      axiosSecure.post('/payments', paymentInfo)
+        .then(res => {
+          console.log('Payment info saved to database:', res.data)
+        })
+        .catch(err => {
+          console.error('Error saving payment info:', err)
+        })
     }
   }
 

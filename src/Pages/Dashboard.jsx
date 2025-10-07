@@ -34,6 +34,9 @@ const Dashboard = () => {
           <li>
             <Link to="/dashboard/payment">Payment</Link>
           </li>
+          <li>
+            <Link to="/dashboard/paymenthistory">Payment History</Link>
+          </li>
         </ul>}
         <hr />
          <ul className="flex flex-col items-center justify-center text-white uppercase font-3xl mt-10">

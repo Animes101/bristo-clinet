@@ -16,6 +16,7 @@ import AddMenu from "../Pages/AddMenu";
 import Payment from "../Pages/Payment";
 import ManageAllItem from "../Pages/ManageAllItem";
 import UpdateMenu from "../Pages/UpdateMenu";
+import PaymentHistry from "../Pages/PaymentHistry";
 
 
 
@@ -46,7 +47,8 @@ const router = createBrowserRouter([
        {path:'/dashboard/addmenu', element: <Admin><AddMenu /></Admin>},
        {path:'/dashboard/manag', element: <Admin><ManageAllItem /></Admin>},
        {path:'/dashboard/menu/update', element: <Admin><UpdateMenu /></Admin>},
-        {path:'/dashboard/payment', element: <Payment />}
+        {path:'/dashboard/payment', element: <Payment />},
+        {path:"/dashboard/paymenthistory", element:<PaymentHistry />}
      ]
     }
 ]);
